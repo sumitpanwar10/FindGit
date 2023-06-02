@@ -15,7 +15,7 @@ function App() {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <Paper style={{ height: "250vh" }} >
+      <Paper style={{ height: "250vh", bgcolor: 'background.paper' }} >
         <div>
           <Nav check={darkMode} change={()=>setDarkMode(!darkMode)}/>
           <Home />
