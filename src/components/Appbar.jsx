@@ -63,7 +63,7 @@ export default function Nav({check, change}) {
             component="div" 
             sx={{ flexGrow: 1, pl: 4, fontWeight: 'bold', fontSize: 28, font: 'Oswald', letterSpacing: 2}}
           >
-            Find<span style={{color: '#73ccff'}}>Git</span>
+           <span style={{color: '#fff'}}>Find</span><span style={{color: '#73ccff'}}>Git</span>
           </Typography>
           <MaterialUISwitch 
             sx={{ m: 1 }} 

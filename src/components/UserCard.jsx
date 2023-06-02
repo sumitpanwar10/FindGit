@@ -31,16 +31,7 @@ export default function UserCard(props) {
   };
   return (
     <Box sx={{ pt: 4 }}>
-      {/* 1. Username
-            2. Name
-            3. Bio
-            4. Location
-            5. User’s Profile Picture
-            6. Number of Followers
-            7. Number of Following
-            8. Number of public repositories */}
-
-      <Card sx={{  width: '400px', bgcolor: theme.palette.mode === 'dark' ? '#0c0d0d' : '#ffffff' }} >
+      <Card sx={{  width: '300px', boxShadow: 1, bgcolor: theme.palette.mode === 'dark' ? '#141414' : '#fff' }} >
         <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', }} >
           <CardHeader
 
@@ -55,8 +46,6 @@ export default function UserCard(props) {
           />
           <CardMedia
             component="img"
-
-
             image={props.img}
             alt=""
             sx={{ p: 2, height: '200px', width: '200px' }}

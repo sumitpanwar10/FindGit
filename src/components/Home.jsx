@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Box, TextField, Typography, CircularProgress } from '@mui/material'
+import { Button, Box, TextField, CircularProgress } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search';
 import UserCard from './UserCard';
 import Repos from './Repos';
@@ -50,11 +50,10 @@ export default function Home() {
         alignItems: 'center',
         justifyContent: 'center',
         p: 1,
-        m: 1,
         mt: 4,
         textAlign: 'center',
       }} >
-        <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
           <TextField
             id="Username"
             label="GitHub Username"
@@ -73,28 +72,25 @@ export default function Home() {
             }}>
             <SearchIcon fontSize='large' /></Button>
         </Box>
+        {loading && <CircularProgress sx={{ pt: 6 }} />}
         
-        <Box sx={{
-          display:'flex',
-          flexDirection:'column',
-          justifyContent:'center',
-          alignItems: 'center',
-          textAlign: 'center' // Add this property
-        }}>
           {error && <p>{error}</p>}
           {user && (
             <Box sx={{
-              display:'flex',
-          flexDirection:'row',
-          justifyContent:'space-between',
-          alignItems: 'start',
-          textAlign: 'center',
-          p:4,
-          mx:2,
-          width:'100%'
+              width: '100%',
+              display: 'flex',
+              flexDirection:  ['column', 'row'],
+              justifyContent: 'space-between',
+              alignItems: 'start',
+              textAlign: 'center',
+              gap: 4,
+              pt: 4,
+              px:4,
+              mx: 2,
+
             }}>
-                <UserCard 
-                sx={{mx:'auto'}}
+              <Box sx={{ width: '20%' }}>
+                <UserCard
                   username={user.login}
                   name={user.name}
                   bio={user.bio}
@@ -104,17 +100,15 @@ export default function Home() {
                   following={user.following}
                   repo={user.public_repos}
                 />
-              
-              <Repos username={user.login} />
+              </Box>
+              <Box sx={{ width: '80%' }}>
+                
+                <Repos username={user.login} />
+              </Box>
             </Box>
           )}
         </Box>
-
-
-      </Box>
-      {loading && <CircularProgress />}
-
-
+      
     </div>
   )
 }
