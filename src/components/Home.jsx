@@ -53,7 +53,7 @@ export default function Home() {
         mt: 4,
         textAlign: 'center',
       }} >
-        <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap:1 }}>
           <TextField
             id="Username"
             label="GitHub Username"
@@ -73,42 +73,43 @@ export default function Home() {
             <SearchIcon fontSize='large' /></Button>
         </Box>
         {loading && <CircularProgress sx={{ pt: 6 }} />}
-        
-          {error && <p>{error}</p>}
-          {user && (
-            <Box sx={{
-              width: '100%',
-              display: 'flex',
-              flexDirection:  ['column', 'row'],
-              justifyContent: 'space-between',
-              alignItems: 'start',
-              textAlign: 'center',
-              gap: 4,
-              pt: 4,
-              px:4,
-              mx: 2,
 
-            }}>
-              <Box sx={{ width: '20%' }}>
-                <UserCard
-                  username={user.login}
-                  name={user.name}
-                  bio={user.bio}
-                  location={user.location}
-                  img={user.avatar_url}
-                  followers={user.followers}
-                  following={user.following}
-                  repo={user.public_repos}
-                />
-              </Box>
-              <Box sx={{ width: '80%' }}>
-                
-                <Repos username={user.login} />
-              </Box>
+        {error && <p>{error}</p>}
+        {user && (
+          <Box sx={{
+            width: '100%',
+            display: 'flex',
+            flexDirection: ['column', 'row'],
+            justifyContent: 'space-between',
+            alignItems: 'start',
+            textAlign: 'center',
+            gap: 3,
+            pt: 4,
+            px: 4,
+            mx: 2,
+          }}>
+            <Box >
+              <UserCard
+                username={user.login}
+                name={user.name}
+                bio={user.bio}
+                location={user.location}
+                img={user.avatar_url}
+                followers={user.followers}
+                following={user.following}
+                repo={user.public_repos}
+              />
             </Box>
-          )}
-        </Box>
-      
+            <Box sx={{
+              display: 'flex',
+              flexGrow: 1
+            }}>
+              <Repos username={user.login} />
+            </Box>
+          </Box>
+        )}
+      </Box>
+
     </div>
   )
 }

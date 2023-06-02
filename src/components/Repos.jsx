@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { List, ListItem, ListItemText, Button, Box, Typography, ListItemIcon, Divider } from '@mui/material';
+import { Button, Box, Typography, Divider } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { lightBlue } from '@mui/material/colors';
 import { CodeSharp, ForkLeft } from '@mui/icons-material';
@@ -50,7 +50,10 @@ export default function Repos({ username }) {
   };
 
   return (
-    <Box sx={{ pt: 4 }}  >
+    <Box sx={{
+      pt: 4,
+      width: '100%',
+    }}  >
       <Box sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -60,49 +63,56 @@ export default function Repos({ username }) {
         alignItems: 'start',
         bgcolor: theme.palette.mode === 'dark' ? '#202020' : '#fff'
       }}>
-        <Typography padding={2} fontSize={18} color={lightBlue[300]}>Publice Repositories: </Typography>
-        <Box>
-          <List >
-            {repos.map((repo) => (
-               <React.Fragment key={repo.id}>
-              <ListItem key={repo.id} style={{ width:'100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems:'start'}}>
-                <ListItemText primary={repo.full_name} secondary={repo.description} />
-                <ListItem>
-                  <ListItem disablePadding>
-                    <ListItemIcon>
-                      <ForkLeft />
-                    </ListItemIcon>
-                    <ListItemText primary={repo.forks_count} />
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemIcon>
-                      <CodeSharp />
-                    </ListItemIcon>
-                    <ListItemText primary={repo.forks_count} />
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemIcon>
-                      <RemoveRedEyeIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={repo.forks_count} />
-                    <Divider/>
-                  </ListItem>
-                  
-                </ListItem>
-                
-              </ListItem>
+        <Typography sx={{ px: 6, pt: 4 }} fontSize={18} color={lightBlue[300]}>Publice Repositories: </Typography>
+        <Box sx={{ width: '100%', p: 2 }}>
+          {repos.map((repo) => (
+            <React.Fragment key={repo.id}>
+              <Box
+                key={repo.id}
+                sx={{
+
+                  px: 4,
+                  width: '100%',
+                  display: 'flex',
+                  flexDirection: ['column', 'row'],
+                  justifyContent: 'space-between',
+                  alignItems: 'start',
+
+                  py: 2,
+                }}>
+                <Box sx={{ width: '75%', display: "flex", flexDirection: 'column', justifyContent: 'space-around', alignItems: 'flex-start', }}>
+                  <a href={repo.html_url} target='__blank'>
+                  <Typography sx={{ width: "auto", wordBreak: 'break-all', textAlign: 'left', overflowX: 'auto' }} variant="subtitle1">{repo.full_name}</Typography>
+                  <Typography sx={{ width: "auto", wordBreak: 'break-all', textAlign: 'left', pt: 2 }} variant="body2" color="text.secondary">{repo.description}</Typography>
+                  </a>
+                </Box>
+                <Box sx={{ width: '25%', display: 'flex', flexDirection: 'row', gap: 3, justifyContent: 'space-between', pt: 2 }}>
+                  <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1, justifyContent: 'space-around', alignItems: 'flex-start', alignContent: 'start' }}>
+                    <ForkLeft />
+                    <Typography>{repo.forks_count}</Typography>
+                  </Box>
+                  <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1, justifyContent: 'space-around', alignItems: 'flex-start' }}>
+                    <CodeSharp />
+                    <Typography>{repo.language}</Typography>
+                  </Box>
+                  <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1, justifyContent: 'space-around', alignItems: 'flex-start' }}>
+                    <RemoveRedEyeIcon />
+                    <Typography >{repo.watchers_count}</Typography>
+                  </Box>
+                </Box>
+              </Box>
               {repos.indexOf(repo) !== repos.length - 1 && (
-         
-          
-           <>
-             <Divider style={{ margin: '16px 0' }}/>
-           </>)}
-                </React.Fragment>
-            ))}
-          </List>
+                <>
+                  <Divider sx={{ width: "auto" }} />
+                </>)}
+            </React.Fragment>
+          ))
+
+          }
+
         </Box>
       </Box>
-      <Box>
+      <Box sx={{ p: 2 }}>
         <Button disabled={currentPage === 1} onClick={handlePreviousPage}>
           Previous
         </Button>

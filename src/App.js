@@ -42,7 +42,7 @@ function App() {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <Paper elevated ='0' style={{ minHeight: "100vh",  }} >
+      <Paper elevated ='0' style={{ minHeight: "100vh", overflowX:'hidden' }} >
         <div>
           <Nav check={darkMode} change={()=>setDarkMode(!darkMode)}/>
           <Home />
