@@ -77,16 +77,16 @@ export default function Repos({ username }) {
                   flexDirection: ['column', 'row'],
                   justifyContent: 'space-between',
                   alignItems: 'start',
-
+                  gap:2,
                   py: 2,
                 }}>
-                <Box sx={{ width: '75%', display: "flex", flexDirection: 'column', justifyContent: 'space-around', alignItems: 'flex-start', }}>
+                <Box sx={{ width: ['100%','75%'], display: "flex", flexDirection: 'column', justifyContent: 'space-around', alignItems: 'flex-start', }}>
                   <a href={repo.html_url} target='__blank'>
                   <Typography sx={{ width: "auto", wordBreak: 'break-all', textAlign: 'left', overflowX: 'auto' }} variant="subtitle1">{repo.full_name}</Typography>
                   <Typography sx={{ width: "auto", wordBreak: 'break-all', textAlign: 'left', pt: 2 }} variant="body2" color="text.secondary">{repo.description}</Typography>
                   </a>
                 </Box>
-                <Box sx={{ width: '25%', display: 'flex', flexDirection: 'row', gap: 3, justifyContent: 'space-between', pt: 2 }}>
+                <Box sx={{ width: ['100%','25%'], display: 'flex', flexDirection: 'row', gap: 3, justifyContent: 'space-between', pt: 2 }}>
                   <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1, justifyContent: 'space-around', alignItems: 'flex-start', alignContent: 'start' }}>
                     <ForkLeft />
                     <Typography>{repo.forks_count}</Typography>

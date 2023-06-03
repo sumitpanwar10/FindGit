@@ -81,7 +81,7 @@ export default function Home() {
             display: 'flex',
             flexDirection: ['column', 'row'],
             justifyContent: 'space-between',
-            alignItems: 'start',
+            alignItems: ['center', 'start'],
             textAlign: 'center',
             gap: 3,
             pt: 4,
