@@ -72,7 +72,7 @@ export default function Home() {
             }}>
             <SearchIcon fontSize='large' /></Button>
         </Box>
-        {loading && <CircularProgress sx={{ pt: 6 }} />}
+        {loading && <CircularProgress sx={{ pt: 10 }} />}
 
         {error && <p>{error}</p>}
         {user && (
