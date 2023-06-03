@@ -3,7 +3,7 @@ import Nav from "./components/Appbar";
 import Paper from '@mui/material/Paper';
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import Home from "./components/Home";
-import { amber, deepOrange, grey, lightBlue } from "@mui/material/colors";
+import { grey, lightBlue } from "@mui/material/colors";
 function App() {
   const[darkMode, setDarkMode]=useState(false)
   const mode = darkMode ? 'light' : 'dark';
