@@ -11,6 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import PlaceIcon from '@mui/icons-material/Place';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { lightBlue } from '@mui/material/colors';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -62,15 +63,15 @@ export default function UserCard(props) {
         </CardContent>
         <Divider />
         <CardActions sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', px: 4 }}>
-          <Typography>More</Typography>
+          <Typography sx={{color: lightBlue[400]}}>More</Typography>
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}
             aria-expanded={expanded}
             aria-label="show more"
           >
-            <ExpandMoreIcon />
-          </ExpandMore>
+            <ExpandMoreIcon sx={{color: lightBlue[400]}} />
+          </ExpandMore >
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
